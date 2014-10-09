@@ -21,6 +21,8 @@ require 'base64'
 node.set['nginx']['default_site_enabled'] = node['kibana']['nginx']['enable_default_site']
 
 include_recipe "nginx"
+include_recipe "ohai"
+
 
 es_instances = node[:opsworks][:layers][:elasticsearch][:instances]
 es_hosts = es_instances.map{ |name, attrs| attrs['private_ip'] }
